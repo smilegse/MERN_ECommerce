@@ -5,11 +5,10 @@ const DataSchema=mongoose.Schema({
         des:{type:String,required:true},
         price:{type:String,required:true},
         img:{type:String,required:true},
-
         productID:{type:mongoose.Schema.Types.ObjectId,required:true},
 
     },
     {timestamps:true,versionKey:false}
 )
-const ProductSliderModel=mongoose.model('productsliders',DataSchema)
+const ProductSliderModel=mongoose.model('productSliders',DataSchema)
 module.exports=ProductSliderModel

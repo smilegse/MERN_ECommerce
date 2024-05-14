@@ -64,6 +64,7 @@ const SaveProfileService = async (req) => {
        let reqBody=req.body;
        reqBody.userID=user_id;
        await ProfileModel.updateOne({userID:user_id},{$set:reqBody},{upsert:true})
+       console.log('log from saveProfileService success')
        return {status:"success", message:"Profile Save Success"}
    }catch (e) {
        return {status:"fail", message:"Something Went Wrong"}
@@ -76,8 +77,8 @@ const SaveProfileService = async (req) => {
 
 const ReadProfileService = async (req) => {
     try {
-        let user_id=req.headers.user_id;
-        let result= await ProfileModel.find({userID:user_id})
+        let user_id = req.headers.user_id;
+        let result = await ProfileModel.find({userID:user_id})
         return {status:"success", data:result}
     }catch (e) {
         return {status:"fail", message:"Something Went Wrong"}

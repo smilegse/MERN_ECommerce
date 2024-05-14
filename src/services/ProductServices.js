@@ -49,7 +49,6 @@ const ListByBrandService = async (req) => {
 
         let JoinWithBrandStage= {$lookup:{from:"brands",localField:"brandID",foreignField:"_id",as:"brand"}};
 
-
         let JoinWithCategoryStage={$lookup:{from:"categories",localField:"categoryID",foreignField:"_id",as:"category"}};
 
         let UnwindBrandStage={$unwind:"$brand"}
@@ -119,7 +118,7 @@ const ListByRemarkService = async (req) => {
         return {status:"success",data:data}
 
     }catch (e) {
-        return {status:"fail",data:e}.toString()
+        return {status:"fail",data:e.toString()}
     }
 }
 
@@ -159,7 +158,7 @@ const DetailsService = async (req) => {
 
         let JoinWithBrandStage= {$lookup:{from:"brands",localField:"brandID",foreignField:"_id",as:"brand"}};
         let JoinWithCategoryStage={$lookup:{from:"categories",localField:"categoryID",foreignField:"_id",as:"category"}};
-        let JoinWithDetailsStage={$lookup:{from:"productdetails",localField:"_id",foreignField:"productID",as:"details"}};
+        let JoinWithDetailsStage={$lookup:{from:"invoiceProducts",localField:"_id",foreignField:"productID",as:"details"}};
 
         let UnwindBrandStage={$unwind:"$brand"}
         let UnwindCategoryStage={$unwind:"$category"}
@@ -209,7 +208,7 @@ const ListByKeywordService = async (req) => {
         ])
         return {status:"success",data:data}
     }catch (e) {
-        return {status:"fail",data:e}.toString()
+        return {status:"fail",data:e.toString()}
     }
 
 }
@@ -238,7 +237,7 @@ const ReviewListService = async (req) => {
 
         return {status:"success",data:data}
     }catch (e) {
-        return {status:"fail",data:e}.toString()
+        return {status:"fail",data:e.toString()}
     }
 
 }
@@ -264,7 +263,7 @@ const CreateReviewService = async (req) => {
 
 const ListByFilterService = async (req) => {
     try {
-
+        console.log(req.body.toString());
         let matchConditions = {};
         if (req.body['categoryID']) {
             matchConditions.categoryID = new ObjectId(req.body['categoryID']);
@@ -273,11 +272,6 @@ const ListByFilterService = async (req) => {
             matchConditions.brandID = new ObjectId(req.body['brandID']);
         }
         let MatchStage = { $match: matchConditions };
-
-
-
-
-
 
         let AddFieldsStage = {
             $addFields: { numericPrice: { $toInt: "$price" }}

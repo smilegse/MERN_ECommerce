@@ -37,14 +37,15 @@ exports.CreateProfile=async (req,res)=>{
 }
 
 
-exports.UpdateProfile=async (req,res)=>{
-    let result=await SaveProfileService(req)
+exports.UpdateProfile = async (req,res)=>{
+    console.log('log from controller')
+    let result = await SaveProfileService(req)
     return res.status(200).json(result)
 }
 
 
-exports.ReadProfile=async (req,res)=>{
-    let result=await ReadProfileService(req)
+exports.ReadProfile = async (req,res)=>{
+    let result = await ReadProfileService(req)
     return res.status(200).json(result)
 }
 

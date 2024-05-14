@@ -140,7 +140,7 @@ const CreateInvoiceService = async (req) => {
     form.append('product_profile','According Invoice')
     form.append('product_amount','According Invoice')
 
-    let SSLRes=await axios.post(PaymentSettings[0]['init_url'],form);
+    let SSLRes = await axios.post(PaymentSettings[0]['init_url'],form);
 
     return {status:"success",data:SSLRes.data}
 
