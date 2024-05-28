@@ -4,8 +4,8 @@ const ProductSliderModel=require('../models/ProductSliderModel')
 const ProductModel=require('../models/ProductModel')
 const ProductDetailModel=require('../models/ProductDetailModel')
 const ReviewModel=require('../models/ReviewModel')
-const mongoose =require('mongoose');
 
+const mongoose =require('mongoose');
 const ObjectId=mongoose.Types.ObjectId;
 
 
