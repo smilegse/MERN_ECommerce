@@ -1,4 +1,4 @@
-const express=require('express');
+const express = require('express');
 const ProductController=require('../controllers/ProductController')
 const UserController=require('../controllers/UserController')
 const WishListController=require('../controllers/WishListController')
@@ -8,8 +8,7 @@ const FeaturesController = require("../controllers/FeaturesController");
 
 const AuthVerification=require('../middlewares/AuthVerification')
 
-
-const router=express.Router();
+const router = express.Router();
 
 // Product
 router.get('/ProductBrandList',ProductController.ProductBrandList)
@@ -24,6 +23,10 @@ router.get('/ProductDetails/:ProductID',ProductController.ProductDetails)
 router.get('/ProductReviewList/:ProductID',ProductController.ProductReviewList)
 router.post('/ProductListByFilter',ProductController.ProductListByFilter);
 
+// Features
+
+router.get('/FeaturesList', FeaturesController.FeaturesList);
+
 
 // User
 router.get('/UserOTP/:email',UserController.UserOTP)
@@ -32,8 +35,6 @@ router.get('/UserLogout',AuthVerification,UserController.UserLogout)
 router.post('/CreateProfile',AuthVerification,UserController.CreateProfile)
 router.post('/UpdateProfile',AuthVerification,UserController.UpdateProfile)
 router.get('/ReadProfile',AuthVerification,UserController.ReadProfile)
-
-
 
 // Wish
 router.post('/SaveWishList',AuthVerification,WishListController.SaveWishList)
