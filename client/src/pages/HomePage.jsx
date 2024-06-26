@@ -27,7 +27,6 @@ const HomePage = () => {
             await CategoryListRequest();
             await ProductListByRemarkRequest('new');
             await BrandListRequest();
-            
         })()
     },[]);
 
@@ -38,7 +37,7 @@ const HomePage = () => {
             <Categories/>
             <Products/>
             <Brands/>
-            {/* <BrandsSkeleton/> */}
+            <BrandsSkeleton/>
         </Layout>
     );
 };
